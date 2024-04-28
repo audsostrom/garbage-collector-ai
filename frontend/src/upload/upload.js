@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, IconButton, Typography, Drawer, List, ListItem, ListItemText} from '@mui/material';
 import './upload.css';
-import upload from '../assets/upload.svg'
+import upload from '../assets/upload.svg';
 
 const Upload = () => {
 
@@ -28,13 +28,13 @@ const Upload = () => {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
-         });
+        });
          */
-         setAnalysisResult({
+        setAnalysisResult({
             people: '2 people',
             gear: 'Gloves',
             priority: 'High',
-            procedure: 'Blah blah',
+            procedure: 'Blah blah'
         });
       } catch (error) {
         console.error('Error analyzing image:', error);
@@ -46,25 +46,21 @@ const Upload = () => {
 
 
    return (
-      <div className='upload-container'>
-      {!selectedFile && !analysisResult && <form className='form' onSubmit={handleSubmit}>
-         <label for="file-upload" className="custom-file-upload">
-            <img className='upload-pic' src={upload}></img>
-         </label>
-        <input id="file-upload" type="file" accept="image/*" onChange={handleFileChange}/>
-        <div className='right-header'>
-         <div className='upload-header'>Upload a Picture</div>
-         <div className='upload-desc'>Using your location and the features of the photo, we’ll analyze the waste and identify the proper cleaning process and tools.</div>
-         <button type="submit" disabled={!selectedFile || loading}>
-            Confirm Upload
-         </button>
-
-        </div>
-      </form>}
+      <div>
+      <h2>Image Analyzer</h2>
+      <form onSubmit={handleSubmit}>
+      <label htmlFor="file-upload" className="custom-file-upload">
+         <img className='upload-pic' src={upload}></img>
+        </label>
+        <input id="file-upload" type="file" accept="image/*" onChange={handleFileChange} />
+        <button type="submit" disabled={!selectedFile || loading}>
+          Analyze
+        </button>
+      </form>
       {selectedFile && (
         <div>
-         <div className='upload-header'>Our Analysis</div>
-          <img className='upload-pic' src={URL.createObjectURL(selectedFile)} alt="Selected" />
+          <h3>Selected Image:</h3>
+          <img src={URL.createObjectURL(selectedFile)} alt="Selected" style={{ maxWidth: '100%' }} />
         </div>
       )}
       {loading && <p>Loading...</p>}
@@ -74,7 +70,7 @@ const Upload = () => {
           <pre>{JSON.stringify(analysisResult, null, 2)}</pre>
         </div>
       )}
-      </div>
+    </div>
    );
 };
 
