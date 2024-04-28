@@ -9,7 +9,6 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 export default function Map(){
 
-
   const [location, setLocation] = useState({ latitude: null, longitude: null });
    const [error, setError] = useState(null);
    const markers = [{latitude: 38.543770, longitude: -121.761658}, {latitude: 40.543770, longitude: -123.761658}]

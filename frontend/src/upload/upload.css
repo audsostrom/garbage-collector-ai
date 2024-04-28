@@ -15,10 +15,11 @@ input[type="file"] {
   align-items: space-around;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  flex-wrap: wrap;
 }
 .right-header {
-  width: 40vw;
+   margin-left: 50px;
+  width: 35vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,7 +34,7 @@ input[type="file"] {
   padding: 60px 0px;
   height: 200px;
   cursor: pointer;
-  width: 50vw;
+  width: 40vw;
 }
 
 .custom-file-upload {

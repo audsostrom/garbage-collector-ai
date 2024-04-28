@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Upload from "./upload/upload";
 import Landing from "./landing/landing";
 import Cleaning from "./cleaning/cleaning";
+import Contact from "./contact/contact";
 import Map from "./map/map";
 import { useLogoutFunction, useRedirectFunctions, withAuthInfo } from '@propelauth/react';
 import Leaderboard from "./leaderboard/leaderboard";
@@ -23,6 +24,7 @@ const App = withAuthInfo(({isLoggedIn}) => {
           <Route path="/cleaning" element={<Cleaning />} />
           <Route path="/map" element={<Map />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
     </Router>

@@ -4,6 +4,7 @@ import upload from "../assets/upload.svg";
 import frog from '../assets/frog-trash.svg';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
+import axios from 'axios';
 
 
 const Upload = () => {
@@ -29,8 +30,12 @@ const Upload = () => {
    setLocation({ latitude, longitude });
 };
 
-  const handleClick = () => {
+  const handleYes = () => {
    navigate('/cleaning');
+ };
+
+ const handleNo = () => {
+   navigate('/contact');
  };
 
 
@@ -39,36 +44,36 @@ const Upload = () => {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (!selectedFile) return;
-
-    setLoading(true);
-
-    const formData = new FormData();
-    formData.append("image", selectedFile);
-
-    try {
-      /**
-         const response = await axios.post('/api/analyze', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-         */
-      const currAnalysisResult = {
-         people: "2 people",
-         gear: "Gloves",
-         priority: "High",
-         procedure: "Blah blah",
-       };
-       
-      setAnalysisResult(currAnalysisResult);
-    } catch (error) {
-      console.error("Error analyzing image:", error);
-    }
-
-    setLoading(false);
-  };
+   event.preventDefault();
+   if (!selectedFile) return;
+ 
+   setLoading(true);
+ 
+   const formData = new FormData();
+   formData.append("image", selectedFile);
+ 
+   const config = {
+     headers: {
+       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjdkMjQ4ZjIxLTVhMDYtNGZmMi1hZjU4LTFkM2FjNjY0ZTRhNSJ9.eyJzdWIiOiI0MGM2YTVjYi0xOTZjLTRiYmYtYjk2NS1mMGMxNmRjNDkwMmYiLCJpYXQiOjE3MTQyODg4NzksImV4cCI6MTcxNDM3NTI3OSwidXNlcl9pZCI6IjQwYzZhNWNiLTE5NmMtNGJiZi1iOTY1LWYwYzE2ZGM0OTAyZiIsImlzcyI6Imh0dHBzOi8vNDc3MzA0Mi5wcm9wZWxhdXRodGVzdC5jb20iLCJlbWFpbCI6ImNnYXdhbmRlMTJAZ21haWwuY29tIiwib3JnX2lkX3RvX29yZ19tZW1iZXJfaW5mbyI6e319.eXRhczwmfnZkqLIKsPuETjn_-eJrcSyIoVhdqgnHi2pWavOk5I5rmJSdlCbAhtx1BLpamtADYpo1Khdhsi2xi_nj1rsHRmwZzMC7xiQkn2mz9sHjbF4SOqkRu3qQypEEVMZuIWBKYRRhMugzYYkCWiq2U04d5riGDbVumOuA8GhEmofA-0bMuetY2LP06xm6bGAOSQI-KFUIeawoLL9PPjoKn5a9x7oR-9L0pGMVRGrDmWnwU-dB3sDz_vIbce1digH2ag-ZUq8WUiELryqNtXPIxiH4W9BddvemHzpeLGWEzBEGYyIUAF7w1JRqSNUvYaI2Li8VK6-55yCdXEhD_w'
+     }
+   };
+ 
+   try {
+     //const response = await axios.post('https://fastapi-python-vib1.onrender.com/trash-posts/', formData, config);
+     // console.log("response from server", response.data);
+     const currAnalysisResult = {
+       people: "2 people",
+       gear: "Gloves",
+       priority: "High",
+       procedure: "Blah blah",
+     };
+     setAnalysisResult(currAnalysisResult);
+   } catch (error) {
+     console.error("Error analyzing image:", error);
+   }
+ 
+   setLoading(false);
+ };
 
   return (
     <div>
@@ -124,8 +129,8 @@ const Upload = () => {
                <div className="user-location">Taken at {location.latitude} {location.longitude}</div>
                <div className="question-cleaning">Do you plan on cleaning it?</div>
                <div className="buttons-bar">
-               <button className="yes-button" onClick={handleClick}>Yes!</button>
-               <button className="no-button">No.</button>
+               <button className="yes-button" onClick={handleYes}>Yes!</button>
+               <button className="no-button" onClick={handleNo}>No.</button>
 
                </div>
 
