@@ -15,7 +15,16 @@
 }
 
 .logo-name {
+   font-size: 45px;
+   font-weight: bold;
+   margin-right: 20px;
 }
+
+.logo {
+   width: 45px;
+   height: 45px;
+}
+
 
 .right-side {
   justify-self: flex-end;

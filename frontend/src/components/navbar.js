@@ -36,6 +36,11 @@ const Navbar = () => {
         anchor="right"
         open={isDrawerOpen}
         onClose={toggleDrawer}
+        PaperProps={{
+         sx: {
+           width: 300
+         }
+       }}
       >
         <div
           role="presentation"
@@ -44,18 +49,18 @@ const Navbar = () => {
         >
           <List>
             <ListItem button key="Profile">
-              <ListItemText primary="Profile"/>
+              <ListItemText primaryTypographyProps={{fontFamily: 'Lora'}} primary="Profile"/>
             </ListItem>
             <Link to="/upload">
                <ListItem button key="Upload a Picture">
-               <ListItemText primary="Upload a Picture"/>
+               <ListItemText primaryTypographyProps={{fontFamily: 'Lora'}}  primary="Upload a Picture"/>
                </ListItem>
             </Link>
             <ListItem button key="Waste Map">
-              <ListItemText primary="Waste Map"/>
+              <ListItemText primaryTypographyProps={{fontFamily: 'Lora'}}  primary="Waste Map"/>
             </ListItem>
             <ListItem button key="Leaderboards">
-              <ListItemText primary="Leaderboards"/>
+              <ListItemText primaryTypographyProps={{fontFamily: 'Lora'}}  primary="Leaderboards"/>
             </ListItem>
             {/* Add more ListItem components for other menu items */}
           </List>
