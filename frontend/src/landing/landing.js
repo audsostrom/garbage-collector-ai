@@ -21,7 +21,7 @@ const Landing = withAuthInfo((props) => {
       <div id="left-side-content">
          <div className="landing-text">
          <div className="header">Keep Things Better Than You Found It</div>
-         <div className="subheader">We empower communities to tackle litter and create a cleaner, healthier planet. <b></b>Trash.ai is the one-stop app to report, clean up, and prevent litter. Simply take a picture of litter and upload it with your location. Our AI will identify the waste and suggest disposal methods.</div>
+         <div className="subheader">We empower communities to tackle litter and create a cleaner, healthier planet. <b></b>EcoSnap is the one-stop app to report, clean up, and prevent litter. Simply take a picture of litter and upload it with your location. Our AI will identify the waste and suggest disposal methods.</div>
 
 
          </div>

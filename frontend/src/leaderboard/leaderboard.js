@@ -43,11 +43,10 @@ const Leaderboard = withAuthInfo((props) => {
         {users.map((user, index) => (
           <li className="leaderboard-item" key={index}>
             <b>{user.username}</b> ({user.points} points)
-          </li>
+          </li> 
         ))}
       </ol>
       <div className="leaderboard-bottom">
-         <div className='leaderboard-you'>You: {props.user.email} (80 pts)</div>
          <Link to='/map'>
             <button className='leaderboard-button'>Go find places to raise your points</button>
          </Link>

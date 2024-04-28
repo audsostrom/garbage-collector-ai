@@ -76,19 +76,37 @@ const Cleaning = withAuthInfo((props) => {
                </div>
             </div>
               <div id="right-side-clean-1">
-                <label htmlFor="file-upload" className="custom-file-upload">
-                  <img className="upload-pic" src={upload}></img>
-                </label>
-                <input
-                  id="file-upload"
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                />
+              {!selectedFile && (
+                <div>
+                    <label htmlFor="file-upload" className="custom-file-upload">
+                      <img className="upload-pic" src={upload}></img>
+                    </label>
+                  
+                    <input
+                      id="file-upload"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFileChange}
+                    />
+                  </div>
+               )}
+
+                
                
-               <div>
-                <h4>After</h4>
-               </div>
+              <div>
+              <h4>After</h4>
+              </div>
+
+               {selectedFile && (
+                <div>
+                    <img
+                      className="chosen-pic"
+                      src={URL.createObjectURL(selectedFile)}
+                      alt="Selected"
+                    />
+                  </div>
+               )}
+
                {selectedFile && post && <button className='leaderboard-button' type="submit" disabled={!selectedFile}>Get +{post.details.reward} Points</button>}
               </div>
             

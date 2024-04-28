@@ -28,7 +28,7 @@ const Navbar = withAuthInfo((props) => {
     <div className="navbar-container">
       <Link to="/">
       <div className="left-side">
-        <div className="logo-name">Trash.ai</div>
+        <div className="logo-name">EcoSnap</div>
         <img className="logo" src={logo} alt="logo" />
       </div>
       </Link>

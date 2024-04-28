@@ -133,8 +133,7 @@ const Upload = withAuthInfo((props) => {
           />
          <div className='right-header'>
                <div className='upload-header'>Our Analysis</div>
-               <div className='upload-desc'>Looks like this is a proper mess!</div>
-               <div className="user-location">Taken at {location.latitude}, {location.longitude}</div>
+               <div className="user-location">Taken at <b>Latitude</b> = {location.latitude}, <b>Longitude</b> = {location.longitude}</div>
                <div className="question-cleaning">Do you plan on cleaning it?</div>
                <div className="buttons-bar">
                <button className="yes-button" onClick={handleYes}>Yes!</button>
