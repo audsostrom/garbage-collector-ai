@@ -7,6 +7,7 @@ import Landing from "./landing/landing";
 import Cleaning from "./cleaning/cleaning";
 import Map from "./map/map";
 import { useLogoutFunction, useRedirectFunctions, withAuthInfo } from '@propelauth/react';
+import Leaderboard from "./leaderboard/leaderboard";
 
 
 const App = withAuthInfo(({isLoggedIn}) => {
@@ -21,6 +22,7 @@ const App = withAuthInfo(({isLoggedIn}) => {
           <Route path="/upload" element={<Upload />} />
           <Route path="/cleaning" element={<Cleaning />} />
           <Route path="/map" element={<Map />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
         </Routes>
       </div>
     </Router>
