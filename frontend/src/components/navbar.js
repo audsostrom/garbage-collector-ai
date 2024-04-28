@@ -50,12 +50,9 @@ const Navbar = withAuthInfo((props) => {
           onClick={toggleDrawer}
           onKeyDown={toggleDrawer}
         >
-            <Typography><ListItemText primaryTypographyProps={{marginLeft: 2, marginTop: 2, fontFamily: 'Lora', fontWeight: 'bold'}} primary={'Welcome '+ props.user.email}/></Typography>
+            <Typography><ListItemText primaryTypographyProps={{marginLeft: 2, marginTop: 3, fontFamily: 'Lora', fontWeight: 'bold'}} primary={'Welcome '+ props.user.email}/></Typography>
           <List>
             
-            <ListItem button key="Profile">
-              <ListItemText primaryTypographyProps={{fontFamily: 'Lora'}} primary="Profile"/>
-            </ListItem>
             <Link to="/upload">
                <ListItem button key="Upload a Picture">
                <ListItemText primaryTypographyProps={{fontFamily: 'Lora'}}  primary="Upload a Picture"/>

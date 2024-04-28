@@ -75,7 +75,6 @@ input[type="file"] {
 
 .upload-confirm {
    justify-self: flex-end;
-   align-self: center;
    margin-top: auto;
    background-color: #373F51;
    color: white;
@@ -85,11 +84,12 @@ input[type="file"] {
    border-radius: 20px;
    font-weight: 600;
    font-size: 18px;
+   align-self: flex-start;
 }
 
 #statistics {
    margin-top: 60px;
-  margin-left: 100px;
+   margin-left: 5%;
   display: flex;
   padding-bottom: 60px;
 }
@@ -97,8 +97,8 @@ input[type="file"] {
 
 .buttons-bar {
    display: flex;
-   align-items: center;
    gap: 20px;
+   align-self: flex-start;
 }
 
 .yes-button {
@@ -113,11 +113,12 @@ input[type="file"] {
 }
 
 .question-cleaning {
-   margin-top: 70px;
-   margin-bottom: 30px;
+   margin-top: 50px;
+   margin-bottom: 60px;
    font-style: italic;
    font-weight: bold;
    font-size: 20px;
+   align-self: flex-start;
 }
 
 .no-button {
@@ -132,6 +133,7 @@ input[type="file"] {
 
 .frog-trash {
    margin-left: auto;
-   align-self: flex-end;
-   margin-right: 100px;
+   justify-self: flex-end;
+   align-self: center;
+   margin-right: 5%;
 }

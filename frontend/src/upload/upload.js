@@ -5,11 +5,14 @@ import frog from '../assets/frog-trash.svg';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
 import axios from 'axios';
+import { useParams } from "react-router-dom";
 
 
 const Upload = () => {
+  const { id } = useParams();
    const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
+  const [trashId, setTrashId] = useState(null);
   const [analysisResult, setAnalysisResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [location, setLocation] = useState({ latitude: null, longitude: null });
@@ -31,7 +34,7 @@ const Upload = () => {
 };
 
   const handleYes = () => {
-   navigate('/cleaning');
+   navigate(`/cleaning/${trashId}`);
  };
 
  const handleNo = () => {
@@ -59,15 +62,17 @@ const Upload = () => {
    };
  
    try {
-     const response = await axios.post('https://fastapi-python-vib1.onrender.com/trash-posts/', formData, config);
-     console.log("response from server", response.data);
-     const currAnalysisResult = {
-       people: "2 people",
-       gear: "Gloves",
-       priority: "High",
-       procedure: "Blah blah",
-     };
-     setAnalysisResult(currAnalysisResult);
+     axios.post('http://127.0.0.1:8000/trash-posts/', formData, config).then(response => {
+      console.log("response from server", response.data);
+      setTrashId(response.data.post_id);
+      setAnalysisResult(response.data.gemini_response); // Update the state to trigger TextToSpeech
+    })
+    .catch(error => {
+      console.error('Error uploading image:', error);
+      setAnalysisResult(); // Set error message for TTS
+    });
+    
+     
    } catch (error) {
      console.error("Error analyzing image:", error);
    }
@@ -126,7 +131,7 @@ const Upload = () => {
          <div className='right-header'>
                <div className='upload-header'>Our Analysis</div>
                <div className='upload-desc'>Looks like this is a proper mess!</div>
-               <div className="user-location">Taken at {location.latitude} {location.longitude}</div>
+               <div className="user-location">Taken at {location.latitude}, {location.longitude}</div>
                <div className="question-cleaning">Do you plan on cleaning it?</div>
                <div className="buttons-bar">
                <button className="yes-button" onClick={handleYes}>Yes!</button>
@@ -141,11 +146,44 @@ const Upload = () => {
          
           <div id="statistics">
             <div>
-            <h3>Statistics</h3>
-            <div>People Needed: {analysisResult.people}</div>
-            <div>Gear Needed: {analysisResult.gear}</div>
-            <div>Priority Level: {analysisResult.priority}</div>
-            <div>Necessary Procedure: {analysisResult.procedure}</div>
+            <h2>Statistics</h2>
+            <div><b>Location Description:</b> {analysisResult.Description}</div>
+            <div>
+               <b>Nearby Locations:</b> { analysisResult.Nearby_landmarks.map((item, index) => (
+                 (index ==  analysisResult.Nearby_landmarks.length - 1 ? (
+                  <span>{item.name} ({item.distance})</span>
+                 ) : <span>{item.name} ({item.distance}), </span>)
+
+
+               ))
+              }
+
+
+            </div>
+            <div><b>Impact:</b> {analysisResult.impact_level}</div>
+            <div><b>Emergency level:</b> {analysisResult.emergency}</div>
+            <div><b>Type of waste:</b> {analysisResult.Type_of_waste}</div>
+            <div><b>People required to clean:</b> {analysisResult.people_required}</div>
+            <div>
+               <b>Protective Measures:</b>
+               { analysisResult.suggestion["safety precautions"].map((item, index) => (
+                 <div>{item}</div>
+
+               ))
+              }
+
+
+            </div>
+            <div>
+               <b>Procedure For Cleanup:</b> 
+               { analysisResult.suggestion.Steps.map((item, index) => (
+                 <div>{item}</div>
+
+               ))
+              }
+
+
+            </div>
             </div>
             <img className='frog-trash' src={frog}></img>
          </div>

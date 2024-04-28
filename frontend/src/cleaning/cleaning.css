@@ -9,14 +9,22 @@
  input[type="file"] {
    display: none;
  }
+
+ .thank-clean {
+  margin-left: 30px;
+
+ }
+ .please-upload {
+  margin-left: 30px;
+  margin-bottom: 60px;
+ }
  
- .form {
-   align-items: space-around;
+ .form-1 {
+   align-items: center;
    display: flex;
    justify-content: center;
-   gap: 10px;
  }
- .right-header {
+ .right-header-1 {
    width: 40vw;
    display: flex;
    flex-direction: column;
@@ -24,7 +32,7 @@
    align-items: center;
  }
 
- #right-side-clean {
+ #right-side-clean-1 {
    width: 40vw;
    display: flex;
    flex-direction: column;
@@ -78,72 +86,5 @@
    font-size: 25px;
  }
  
- .upload-confirm {
-    justify-self: flex-end;
-    align-self: center;
-    margin-top: auto;
-    background-color: #373F51;
-    color: white;
-    border: none;
-    padding: 20px 10px;
-    width: 200px;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 18px;
- }
- 
- #statistics {
-    margin-top: 60px;
-   margin-left: 100px;
-   display: flex;
-   padding-bottom: 60px;
- }
  
  
- .buttons-bar {
-    display: flex;
-    align-items: center;
-    gap: 20px;
- }
- 
- .yes-button {
-    padding: 10px 50px;
-    border-radius: 10px;
- 
-    background-color: #73903F;
-    border: none;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
- }
- 
- #rightside {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   margin: auto;
- }
- .question-cleaning {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    font-style: italic;
-    font-weight: bold;
-    font-size: 20px;
- }
- 
- .no-button {
-    padding: 10px 50px;
-    border-radius: 10px;
-    background-color: #E8655F;
-    border: none;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
- }
- 
- .frog-trash {
-    margin-left: auto;
-    align-self: flex-end;
-    margin-right: 100px;
- }

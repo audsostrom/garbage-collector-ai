@@ -21,7 +21,7 @@ const App = withAuthInfo(({isLoggedIn}) => {
         <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route path="/upload" element={<Upload />} />
-          <Route path="/cleaning" element={<Cleaning />} />
+          <Route path="/cleaning/:id" element={<Cleaning />} />
           <Route path="/map" element={<Map />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/contact" element={<Contact />} />

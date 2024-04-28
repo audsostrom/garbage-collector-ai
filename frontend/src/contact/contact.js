@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MenuItem, FormControl, Select, Button, InputLabel, Box } from '@mui/material';
 
 import './contact.css';
+import { useParams } from 'react-router';
 
 const emails = [
   "user1@example.com",
@@ -18,6 +19,7 @@ const organizations = [
 ];
 
 function Contact() {
+  const { id } = useParams();
   const [selectedEmail, setSelectedEmail] = useState('');
 
   const handleChange = (event) => {
