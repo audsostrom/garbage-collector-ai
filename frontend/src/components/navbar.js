@@ -13,8 +13,11 @@ import logo from "../assets/recycle.svg";
 import menu from "../assets/menu-icon.svg";
 import "./navbar.css";
 import { Link } from "react-router-dom";
+import { useLogoutFunction, useRedirectFunctions, withAuthInfo } from '@propelauth/react';
 
-const Navbar = () => {
+const Navbar = withAuthInfo((props) => {
+   const logoutFn = useLogoutFunction()
+  const {redirectToSignupPage, redirectToLoginPage} = useRedirectFunctions();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -47,7 +50,9 @@ const Navbar = () => {
           onClick={toggleDrawer}
           onKeyDown={toggleDrawer}
         >
+            <Typography><ListItemText primaryTypographyProps={{marginLeft: 2, marginTop: 2, fontFamily: 'Lora', fontWeight: 'bold'}} primary={'Welcome '+ props.user.email}/></Typography>
           <List>
+            
             <ListItem button key="Profile">
               <ListItemText primaryTypographyProps={{fontFamily: 'Lora'}} primary="Profile"/>
             </ListItem>
@@ -62,12 +67,16 @@ const Navbar = () => {
             <ListItem button key="Leaderboards">
               <ListItemText primaryTypographyProps={{fontFamily: 'Lora'}}  primary="Leaderboards"/>
             </ListItem>
+
+               <ListItem button key="Logout" onClick={() => logoutFn()}>
+               <ListItemText primaryTypographyProps={{fontFamily: 'Lora'}}  primary="Logout"/>
+               </ListItem>
             {/* Add more ListItem components for other menu items */}
           </List>
         </div>
       </Drawer>
     </div>
   );
-};
+});
 
 export default Navbar;

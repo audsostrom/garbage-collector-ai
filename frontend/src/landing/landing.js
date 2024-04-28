@@ -4,15 +4,17 @@ import { useNavigate } from "react-router-dom";
 import frog from '../assets/frog-landing.svg';
 import topCircles from '../assets/upper-circles.svg';
 import lowerCircles from '../assets/lower-circles.svg';
+import {withAuthInfo} from '@propelauth/react';
 
-
-const Landing = () => {
+const Landing = withAuthInfo((props) => {
   let navigate = useNavigate();
 
   const routeChange = () => {
     let path = `upload`;
     navigate(path);
   };
+
+  console.log(props.user.email);
 
   return (
     <div className="landing-container">
@@ -33,6 +35,6 @@ const Landing = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Landing;

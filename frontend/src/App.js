@@ -5,10 +5,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Upload from "./upload/upload";
 import Landing from "./landing/landing";
 import Cleaning from "./cleaning/cleaning";
+import { useLogoutFunction, useRedirectFunctions, withAuthInfo } from '@propelauth/react';
 
-function App() {
-  return (
-    <Router>
+
+const App = withAuthInfo(({isLoggedIn}) => {
+  const logoutFn = useLogoutFunction();
+  const {redirectToSignupPage, redirectToLoginPage} = useRedirectFunctions();
+  if (isLoggedIn) {
+      return <Router>
       <div className="App">
         <Navbar></Navbar>
         <Routes>
@@ -18,7 +22,18 @@ function App() {
         </Routes>
       </div>
     </Router>
-  );
-}
+  } else {
+      return <div>
+          The User is logged out.
+          <button onClick={() => redirectToSignupPage()}>
+              Sign up
+          </button>
+          <button onClick={() => redirectToLoginPage()}>
+              Log in
+          </button>
+
+      </div>
+  }
+})
 
 export default App;
