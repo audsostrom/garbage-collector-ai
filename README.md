@@ -25,3 +25,56 @@ This project taught us about the complexities of integrating various technologie
 ## What's next for EcoSnap
 
 Looking ahead, we plan to expand the AI's capabilities, increase our geographic coverage, and integrate with smart city projects. We aim to enhance our app's features to support community clean-up events and develop partnerships with local businesses for a more impactful reward system. EcoSnap will continue to evolve to meet the challenges of sustainability and environmental responsibility.
+
+## Installation
+## 1. Frontend (React)
+
+Follow these steps to set up and start the frontend:
+
+1. **Navigate to the Frontend Directory**:
+    ```bash
+    cd frontend
+    ```
+
+2. **Install Dependencies**:
+    ```bash
+    npm install
+    ```
+
+3. **Start the Application**:
+    ```bash
+    npm start
+    ```
+
+    This will run the React application on [http://localhost:3000](http://localhost:3000).
+
+## Backend (Python with FastAPI)
+
+Follow these steps to set up and run the backend:
+
+1. **Create a Virtual Environment**:
+    ```bash
+    virtualenv .venv
+    ```
+
+2. **Activate the Virtual Environment**:
+    - For macOS/Linux:
+        ```bash
+        source .venv/bin/activate
+        ```
+    - For Windows:
+        ```cmd
+        .venv\Scripts\activate
+        ```
+
+3. **Install Required Packages**:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. **Start the FastAPI Server**:
+    ```bash
+    uvicorn main:app --reload
+    ```
+
+The `--reload` flag enables auto-reload so the server will restart after code changes. The server runs on [http://localhost:5001](http://localhost:5001).
