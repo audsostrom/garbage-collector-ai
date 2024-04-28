@@ -15,11 +15,12 @@ import frog from '../assets/frog-trash.svg';
 import { useNavigate, useParams } from 'react-router-dom';
 import trash from '../assets/dummy-trash.jpeg';
 import axios from 'axios';
+import { useLogoutFunction, useRedirectFunctions, withAuthInfo } from '@propelauth/react';
 
 
 
 
-const Cleaning = () => {
+const Cleaning = withAuthInfo((props) => {
   const { id } = useParams();
    const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
@@ -33,7 +34,7 @@ const Cleaning = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!selectedFile) return;
-    axios.get(`http://127.0.0.1:8000/trash-posts/${id}`, config)
+    axios.get(`http://127.0.0.1:5001/trash-posts/${id}`, config)
     .then(response => {
       console.log("response from server", response.data);
       setPostResult(response.data);
@@ -46,12 +47,12 @@ const Cleaning = () => {
   };
   const config = {
     headers: {
-      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjdkMjQ4ZjIxLTVhMDYtNGZmMi1hZjU4LTFkM2FjNjY0ZTRhNSJ9.eyJzdWIiOiI0MGM2YTVjYi0xOTZjLTRiYmYtYjk2NS1mMGMxNmRjNDkwMmYiLCJpYXQiOjE3MTQyODg4NzksImV4cCI6MTcxNDM3NTI3OSwidXNlcl9pZCI6IjQwYzZhNWNiLTE5NmMtNGJiZi1iOTY1LWYwYzE2ZGM0OTAyZiIsImlzcyI6Imh0dHBzOi8vNDc3MzA0Mi5wcm9wZWxhdXRodGVzdC5jb20iLCJlbWFpbCI6ImNnYXdhbmRlMTJAZ21haWwuY29tIiwib3JnX2lkX3RvX29yZ19tZW1iZXJfaW5mbyI6e319.eXRhczwmfnZkqLIKsPuETjn_-eJrcSyIoVhdqgnHi2pWavOk5I5rmJSdlCbAhtx1BLpamtADYpo1Khdhsi2xi_nj1rsHRmwZzMC7xiQkn2mz9sHjbF4SOqkRu3qQypEEVMZuIWBKYRRhMugzYYkCWiq2U04d5riGDbVumOuA8GhEmofA-0bMuetY2LP06xm6bGAOSQI-KFUIeawoLL9PPjoKn5a9x7oR-9L0pGMVRGrDmWnwU-dB3sDz_vIbce1digH2ag-ZUq8WUiELryqNtXPIxiH4W9BddvemHzpeLGWEzBEGYyIUAF7w1JRqSNUvYaI2Li8VK6-55yCdXEhD_w'
+      'Authorization': 'Bearer ' + props.accessToken
     }
   };
 
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/trash-posts/${id}`, config)
+    axios.get(`http://127.0.0.1:5001/trash-posts/${id}`, config)
     .then(response => {
       console.log("response from server", response.data);
       setPostResult(response.data);
@@ -69,8 +70,10 @@ const Cleaning = () => {
           <form onSubmit={handleSubmit} className='form-1'>
             <div className='right-header-1'>
 
-               {post && <img className="prev-uploaded-pic" src={`http://127.0.0.1:8000/${post.image_before_url}`}></img>}
-               <div>Before</div>
+               {post && <img className="prev-uploaded-pic" src={`http://127.0.0.1:5001/${post.image_before_url}`}></img>}
+               <div>
+                <h4>Before</h4>
+               </div>
             </div>
               <div id="right-side-clean-1">
                 <label htmlFor="file-upload" className="custom-file-upload">
@@ -83,8 +86,10 @@ const Cleaning = () => {
                   onChange={handleFileChange}
                 />
                
-               <div>After</div>
-               {selectedFile && post && <button type="submit" disabled={!selectedFile}>Get +{post.details.reward} Points</button>}
+               <div>
+                <h4>After</h4>
+               </div>
+               {selectedFile && post && <button className='leaderboard-button' type="submit" disabled={!selectedFile}>Get +{post.details.reward} Points</button>}
               </div>
             
 
@@ -95,6 +100,6 @@ const Cleaning = () => {
    
     </div>
   );
-};
+});
 
 export default Cleaning;
