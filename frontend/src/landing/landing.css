@@ -1,0 +1,56 @@
+.landing-container {
+   display: flex;
+   font-family: 'Open Sans';
+}
+
+#left-side-content {
+   background-image: url('../assets/circles.svg');
+   background-repeat: no-repeat;
+   background-size: contain;
+   flex-grow: 1;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+#right-side-content {
+   background-color: #58A4B0;
+   min-width: 250px;
+   height: calc(100vh - 60px);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 20px;
+}
+
+.landing-text {
+   width: 80%;
+   margin-left: 10%;
+
+}
+
+.header {
+   font-weight: bold;
+   font-size: 45px;
+   margin-bottom: 10px;
+}
+
+.subheader {
+   font-size: 25px;
+}
+
+.frog-logo {
+   width: 200px;
+}
+
+#take-a-pic {
+   background-color: #373F51;
+   color: white;
+   border: none;
+   padding: 20px 10px;
+   border-radius: 20px;
+   font-weight: 600;
+   font-size: 18px;
+}
