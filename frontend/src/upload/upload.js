@@ -11,11 +11,20 @@ import {
 } from "@mui/material";
 import "./upload.css";
 import upload from "../assets/upload.svg";
+import frog from '../assets/frog-trash.svg';
+import { useNavigate } from 'react-router-dom';
+
 
 const Upload = () => {
+   const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
   const [analysisResult, setAnalysisResult] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const handleClick = () => {
+   navigate('/cleaning');
+ };
+
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -57,7 +66,6 @@ const Upload = () => {
     <div>
       {!analysisResult && (
         <div className="upload-container">
-          <h2>Image Analyzer</h2>
           <form onSubmit={handleSubmit} className='form'>
             {!selectedFile && (
               <div>
@@ -85,9 +93,9 @@ const Upload = () => {
             <div className='right-header'>
                <div className='upload-header'>Upload a Picture</div>
                <div className='upload-desc'>Using your location and the features of the photo, we’ll analyze the waste and identify the proper cleaning process and tools.</div>
-               <button type="submit" disabled={!selectedFile || loading}>
+               {selectedFile && <button className='upload-confirm' type="submit" disabled={!selectedFile || loading}>
                   Confirm Upload
-               </button>
+               </button>}
 
             </div>
 
@@ -105,10 +113,10 @@ const Upload = () => {
          <div className='right-header'>
                <div className='upload-header'>Our Analysis</div>
                <div className='upload-desc'>Looks like this is a proper mess!</div>
-               <div>Do you plan on cleaning it?</div>
-               <div>
-               <button>Yes!</button>
-               <button>No.</button>
+               <div className="question-cleaning">Do you plan on cleaning it?</div>
+               <div className="buttons-bar">
+               <button className="yes-button" onClick={handleClick}>Yes!</button>
+               <button className="no-button">No.</button>
 
                </div>
 
@@ -117,13 +125,16 @@ const Upload = () => {
 
          </div>
          
-          <div>
-          <h3>Analysis Result:</h3>
-          <div>People Needed: {analysisResult.people}</div>
-          <div>Gear Needed: {analysisResult.gear}</div>
-          <div>Priority Level: {analysisResult.priority}</div>
-          <div>Necessary Procedure: {analysisResult.procedure}</div>
-        </div>
+          <div id="statistics">
+            <div>
+            <h3>Statistics</h3>
+            <div>People Needed: {analysisResult.people}</div>
+            <div>Gear Needed: {analysisResult.gear}</div>
+            <div>Priority Level: {analysisResult.priority}</div>
+            <div>Necessary Procedure: {analysisResult.procedure}</div>
+            </div>
+            <img className='frog-trash' src={frog}></img>
+         </div>
         </div>
       )}
       {loading && <p>Loading...</p>}

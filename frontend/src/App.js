@@ -4,6 +4,7 @@ import Navbar from "./components/navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Upload from "./upload/upload";
 import Landing from "./landing/landing";
+import Cleaning from "./cleaning/cleaning";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route path="/upload" element={<Upload />} />
+          <Route path="/cleaning" element={<Cleaning />} />
         </Routes>
       </div>
     </Router>
