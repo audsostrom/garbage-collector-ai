@@ -30,12 +30,12 @@ const Upload = () => {
           },
          });
          */
-        setAnalysisResult(JSON.stringify({
-         people: '2 people',
-         gear: 'Gloves',
-         priority: 'High',
-         procedure: 'Blah blah',
-     }, null, 2));
+         setAnalysisResult({
+            people: '2 people',
+            gear: 'Gloves',
+            priority: 'High',
+            procedure: 'Blah blah',
+        });
       } catch (error) {
         console.error('Error analyzing image:', error);
       }
@@ -71,9 +71,7 @@ const Upload = () => {
       {analysisResult && (
         <div>
           <h3>Analysis Result:</h3>
-          <div>{analysisResult.people}</div>
-          <div>{analysisResult.gear}</div>
-          <div>{analysisResult.procedure}</div>
+          <pre>{JSON.stringify(analysisResult, null, 2)}</pre>
         </div>
       )}
       </div>
