@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 
 
 const Upload = () => {
-  const { id } = useParams();
+
    const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
   const [trashId, setTrashId] = useState(null);

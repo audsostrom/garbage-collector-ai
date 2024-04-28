@@ -24,6 +24,11 @@
    display: flex;
    justify-content: center;
  }
+
+ .before-image {
+  width: 100px;
+  height: 100px;
+ }
  .right-header-1 {
    width: 40vw;
    display: flex;

@@ -18,6 +18,7 @@ import axios from 'axios';
 
 
 
+
 const Cleaning = () => {
   const { id } = useParams();
    const navigate = useNavigate();
@@ -63,7 +64,8 @@ const Cleaning = () => {
         <div className='please-upload'>Be sure to upload an after photo to confirm the area is clear</div>
           <form onSubmit={handleSubmit} className='form-1'>
             <div className='right-header-1'>
-               {post && <img className="prev-uploaded-pic" src={post.image_before_url}></img>}
+
+               {post && <img className="prev-uploaded-pic" src={`http://127.0.0.1:8000/${post.image_before_url}`}></img>}
                <div>Before</div>
             </div>
               <div id="right-side-clean-1">
