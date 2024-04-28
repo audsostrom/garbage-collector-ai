@@ -25,10 +25,6 @@ const Cleaning = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [post, setPostResult] = useState(null)
 
-  const handleClick = () => {
-   navigate('/cleaning');
- };
-
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -37,6 +33,14 @@ const Cleaning = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!selectedFile) return;
+    axios.get(`http://127.0.0.1:8000/trash-posts/${id}`, config)
+    .then(response => {
+      console.log("response from server", response.data);
+      setPostResult(response.data);
+    })
+    .catch(error => {
+      console.error('Error uploading image:', error);
+    });
     navigate('/leaderboard');
 
   };
@@ -80,7 +84,7 @@ const Cleaning = () => {
                 />
                
                <div>After</div>
-               {selectedFile && post && <button>Get +{post.details.reward} Points</button>}
+               {selectedFile && post && <button type="submit" disabled={!selectedFile}>Get +{post.details.reward} Points</button>}
               </div>
             
 

@@ -53,9 +53,9 @@ const Upload = () => {
    setLoading(true);
  
    const formData = new FormData();
-   formData.append("image", selectedFile);
    formData.append("latitude", location.latitude);
-    formData.append("longitude", location.longitude);
+   formData.append("longitude", location.longitude);
+   formData.append("image", selectedFile);
   
    const config = {
      headers: {
