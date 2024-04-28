@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { AuthProvider } from '@propelauth/react';
-import {RequiredAuthProvider} from '@propelauth/react';
+import { RequiredAuthProvider } from '@propelauth/react';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -61,9 +61,11 @@ const Navbar = withAuthInfo((props) => {
                <ListItemText primaryTypographyProps={{fontFamily: 'Lora'}}  primary="Upload a Picture"/>
                </ListItem>
             </Link>
-            <ListItem button key="Waste Map">
-              <ListItemText primaryTypographyProps={{fontFamily: 'Lora'}}  primary="Waste Map"/>
-            </ListItem>
+            <Link to="/map">
+               <ListItem button key="Waste Map">
+               <ListItemText primaryTypographyProps={{fontFamily: 'Lora'}}  primary="Waste Map"/>
+               </ListItem>
+            </Link>
             <ListItem button key="Leaderboards">
               <ListItemText primaryTypographyProps={{fontFamily: 'Lora'}}  primary="Leaderboards"/>
             </ListItem>

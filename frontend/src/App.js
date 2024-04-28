@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Upload from "./upload/upload";
 import Landing from "./landing/landing";
 import Cleaning from "./cleaning/cleaning";
+import Map from "./map/map";
 import { useLogoutFunction, useRedirectFunctions, withAuthInfo } from '@propelauth/react';
 
 
@@ -19,6 +20,7 @@ const App = withAuthInfo(({isLoggedIn}) => {
           <Route exact path="/" element={<Landing />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/cleaning" element={<Cleaning />} />
+          <Route path="/map" element={<Map />} />
         </Routes>
       </div>
     </Router>

@@ -45,7 +45,7 @@ const Cleaning = () => {
                <div>Before</div>
             </div>
             {!selectedFile && (
-              <div id="right-side">
+              <div id="right-side-clean">
                 <label htmlFor="file-upload" className="custom-file-upload">
                   <img className="upload-pic" src={upload}></img>
                 </label>

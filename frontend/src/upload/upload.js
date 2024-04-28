@@ -1,18 +1,9 @@
-import React, { useState } from "react";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-} from "@mui/material";
 import "./upload.css";
+import React, { useState } from "react";
 import upload from "../assets/upload.svg";
 import frog from '../assets/frog-trash.svg';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
 
 
 const Upload = () => {
@@ -20,6 +11,23 @@ const Upload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [analysisResult, setAnalysisResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [location, setLocation] = useState({ latitude: null, longitude: null });
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+      if (!navigator.geolocation) {
+          setError('User location inaccessible');
+          return;
+      }
+
+      navigator.geolocation.getCurrentPosition(success);
+  }, []);
+
+  const success = (position) => {
+   const latitude = position.coords.latitude;
+   const longitude = position.coords.longitude;
+   setLocation({ latitude, longitude });
+};
 
   const handleClick = () => {
    navigate('/cleaning');
@@ -113,6 +121,7 @@ const Upload = () => {
          <div className='right-header'>
                <div className='upload-header'>Our Analysis</div>
                <div className='upload-desc'>Looks like this is a proper mess!</div>
+               <div className="user-location">Taken at {location.latitude} {location.longitude}</div>
                <div className="question-cleaning">Do you plan on cleaning it?</div>
                <div className="buttons-bar">
                <button className="yes-button" onClick={handleClick}>Yes!</button>
