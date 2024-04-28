@@ -59,8 +59,8 @@ const Upload = () => {
    };
  
    try {
-     //const response = await axios.post('https://fastapi-python-vib1.onrender.com/trash-posts/', formData, config);
-     // console.log("response from server", response.data);
+     const response = await axios.post('https://fastapi-python-vib1.onrender.com/trash-posts/', formData, config);
+     console.log("response from server", response.data);
      const currAnalysisResult = {
        people: "2 people",
        gear: "Gloves",
